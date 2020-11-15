@@ -8,7 +8,7 @@
         <hr class="my-4">
         <p>View the repository here.</p>
         <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">Github Link</a>
+            <a class="btn btn-primary btn-lg" href="https://github.com/yordadev/CIS477-Course-Project" role="button">Github Link</a>
         </p>
     </div>
 @endsection
