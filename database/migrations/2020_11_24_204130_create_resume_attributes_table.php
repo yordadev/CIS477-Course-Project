@@ -17,6 +17,7 @@ class CreateResumeAttributesTable extends Migration
             $table->id();
             $table->string('resume_id');
             $table->string('attribute_id');
+            $table->string('name');
             $table->timestamps();
         });
     }

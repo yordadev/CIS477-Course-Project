@@ -44,13 +44,17 @@ class AuthManager extends Controller
             'email'            => 'required|email|unique:users',
             'password'         => 'required',
             'confirm_password' => 'required|same:password',
-            'type'             => 'nullable|string|max:86'
+            'type'             => 'required|string|max:86'
         ]);
 
-        $user = $this->createUser($request);
-        Auth::login($user, true);
+        if (strtolower($request->type) === "candidate" || strtolower($request->type) === 'hiring manager') {
+            $user = $this->createUser($request);
+            Auth::login($user, true);
 
-        return redirect()->route('home');
+            return redirect()->route('home');
+        } else {
+            return redirect()->back()->withErrors(['Invalid account type. Try again please.']);
+        }
     }
 
 
@@ -71,10 +75,15 @@ class AuthManager extends Controller
             'password' => bcrypt($request->password),
         ]);
 
-        $permission = Permission::where([
-            'is_client' => true
-        ])->first();
-
+        if (strtolower($request->type) === 'candidate') {
+            $permission = Permission::where([
+                'is_client' => true
+            ])->first();
+        } else if (strtolower($request->type) === 'hiring manager') {
+            $permission = Permission::where([
+                'is_contract_manager' => true
+            ])->first();
+        }
 
         UserPermission::create([
             'pivot_id' => UserPermission::generatePivotID(),

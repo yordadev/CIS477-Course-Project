@@ -25,8 +25,8 @@ class CreateResumesTable extends Migration
             $table->string('ug_name')->nullable();
             $table->boolean('graduate')->default(false);
             $table->string('g_name')->nullable();
-            $table->boolean('master')->default(false);
-            $table->string('m_name')->nullable();
+            $table->boolean('phd')->default(false);
+            $table->string('phd_name')->nullable();
             $table->timestamps();
         });
     }

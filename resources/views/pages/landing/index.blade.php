@@ -2,11 +2,6 @@
 
 
 @section('content')
-    @if(!Auth::check())
-        // display 
-        
-    @else 
-
     <div class="row mt-4">
         <div class="col-lg-12">
             <div class="jumbotron">
@@ -31,5 +26,4 @@
             </div>
         </div>
     </div>
-    @endif
 @endsection

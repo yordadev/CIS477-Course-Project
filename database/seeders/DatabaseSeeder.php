@@ -16,8 +16,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
+            PermissionGenerator::class,
             DemoUser::class,
-            PermissionGenerator::class
+            CandidateResume::class
         ]);
     }
 }
