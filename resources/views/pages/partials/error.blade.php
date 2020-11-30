@@ -9,3 +9,5 @@
         </div>
     @endforeach
 @endif
+
+<?php   $bariable ?>

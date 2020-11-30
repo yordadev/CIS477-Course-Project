@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Functionality;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Permission;
+use App\Models\UserPermission;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -42,6 +44,7 @@ class AuthManager extends Controller
             'email'            => 'required|email|unique:users',
             'password'         => 'required',
             'confirm_password' => 'required|same:password',
+            'type'             => 'nullable|string|max:86'
         ]);
 
         $user = $this->createUser($request);
@@ -62,11 +65,24 @@ class AuthManager extends Controller
      */
     private function createUser(Request $request)
     {
-        return User::create([
+        $user = User::create([
             'name' => ucfirst(strtolower($request->name)),
             'email' => strtolower($request->email),
             'password' => bcrypt($request->password),
         ]);
+
+        $permission = Permission::where([
+            'is_client' => true
+        ])->first();
+
+
+        UserPermission::create([
+            'pivot_id' => UserPermission::generatePivotID(),
+            'user_id' => $user->id,
+            'permission_id' => $permission->permission_id
+        ]);
+
+        return $user;
     }
 
 

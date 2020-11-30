@@ -9,6 +9,12 @@ class HomeController extends Controller
 {
     public function render()
     {
-        return view('pages.home.index');
+        // coding
+
+        $data = [];
+        
+        return view('pages.home.index', [
+            'data' => $data
+        ]);
     }
 }
