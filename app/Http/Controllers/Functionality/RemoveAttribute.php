@@ -7,32 +7,30 @@ use App\Models\ResumeAttribute;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class UpdateAttribute extends Controller
+class RemoveAttribute extends Controller
 {
     public function process(Request $request)
     {
         $request->validate([
-            'attribute_id' => 'required|string|max:255',
-            'value'        => 'required|string|max:255'
+            'attribute_id' => 'required|string|max:255'
         ]);
 
         if (!$attribute = ResumeAttribute::where('attribute_id', $request->attribute_id)->first()) {
-            return redirect()->route('home')->withErrors(['Unable to locate the attribute to update.']);
+            return redirect()->route('home')->withErrors(['Unable to locate the attribute to remove.']);
         }
 
         // little validation quick.
         if (Auth::user()->id !== $attribute->resume->user_id) {
             // this attribute belongs to someone else resume.
-            return redirect()->route('home')->withErrors(['Unable to locate the attribute to update.']);
+            return redirect()->route('home')->withErrors(['Unable to locate the attribute to remove.']);
         }
 
         try {
-            $attribute->name = $request->value;
-            $attribute->save();
+            $attribute->delete();
 
-            return redirect()->route('home')->with('success', 'Resume attribute successfully updated.');
+            return redirect()->route('home')->with('success', 'Successfully removed attribute.');
         } catch (\Exception $e) {
-            return redirect()->route('home')->withErrors([$e->getMessage()]);
+            return redirect()->route('home')->withErrors($e->getMessage());
         }
     }
 }

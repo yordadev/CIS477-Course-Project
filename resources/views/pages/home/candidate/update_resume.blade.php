@@ -1,5 +1,9 @@
 <div class="row">
     <div class="col-12">
+        <form method="POST" action="{{ route('post.candidate.resume.remove') }}" id="remove_resume">
+            @csrf
+            <input type="hidden" name="resume_id" value="{{ Auth::user()->resume->resume_id }}">
+        </form>
         <form method="POST" action="{{ route('post.candidate.resume.update') }}" id="update_resume">
             @csrf
 
@@ -205,8 +209,13 @@
             </div>
 
             <div class="row">
-                <div class="col-12 text-center">
-                    <button type="submit" form="update_resume" class="btn btn-block btn-primary">Update Resume</button>
+                <div class="col-lg-6 col-sm-12 text-center">
+                    <button type="submit" form="update_resume" class="btn btn-block btn-primary">Update
+                        Resume</button>
+                </div>
+                <div class="col-lg-6 col-sm-12 text-center">
+                    <button type="submit" form="remove_resume" class="btn btn-block btn-danger">Remove
+                        Resume</button>
                 </div>
             </div>
 

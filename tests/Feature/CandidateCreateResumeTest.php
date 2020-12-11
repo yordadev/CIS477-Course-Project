@@ -34,13 +34,7 @@ class CandidateCreateResumeTest extends TestCase
                 'undergrad'  => true,
                 'ug_name'    => 'DeVry University',
                 'graduate'   => false,
-                'phd'        => false,
-                'attributes' => [
-                    ['name' => 'php'],
-                    ['name' => 'mysql'],
-                    ['name' => 'javascript'],
-                    ['name' => 'css'],
-                ]
+                'phd'        => false
             ]
         );
 
@@ -70,13 +64,7 @@ class CandidateCreateResumeTest extends TestCase
                 'ug_name'   => 'DeVry University',
                 'graduate'  => true,
                 'g_name'    => 'Kellar University',
-                'phd'       => false,
-                'attributes' => [
-                    ['name' => 'python'],
-                    ['name' => 'mysql'],
-                    ['name' => 'javascript'],
-                    ['name' => 'css'],
-                ]
+                'phd'       => false
             ]
         );
 
@@ -105,13 +93,7 @@ class CandidateCreateResumeTest extends TestCase
                 'ug_name'   => 'DeVry University',
                 'graduate'  => true,
                 'g_name'    => 'Kellar University',
-                'phd'       => false,
-                'attributes' => [
-                    ['name' => 'python'],
-                    ['name' => 'mysql'],
-                    ['name' => 'javascript'],
-                    ['name' => 'css'],
-                ]
+                'phd'       => false
             ]
         );
 

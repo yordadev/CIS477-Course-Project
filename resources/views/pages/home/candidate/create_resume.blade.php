@@ -1,13 +1,13 @@
-<form method="POST" action="{{ route('post.candidate.resume') }}">
-
+<form method="POST" id="create_resume" action="{{ route('post.candidate.resume') }}">
+    @csrf
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="name">Resume Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Resume Name">
+            <input type="text" class="form-control" name="name" id="name" placeholder="Resume Name">
         </div>
         <div class="form-group col-md-6">
             <label for="location">location</label>
-            <input type="text" class="form-control" id="location" placeholder="Remote, United States">
+            <input type="text" class="form-control" name="location" id="location" placeholder="Remote, United States">
         </div>
     </div>
     <div class="form-row text-left">
@@ -87,8 +87,14 @@
 
     </div>
 
-    <button type="submit" class="btn btn-primary">Update Resume</button>
 
+    <div class="row">
+        <div class="col-12 text-center">
+            <button type="submit" form="create_resume" class="btn btn-block btn-primary">Create
+                Resume</button>
+        </div>
+
+    </div>
 </form>
 
 <script>

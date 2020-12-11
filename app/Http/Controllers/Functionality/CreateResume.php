@@ -22,10 +22,7 @@ class CreateResume extends Controller
             'graduate'   => 'required',
             'g_name'     => 'nullable|string|max:255',
             'phd'        => 'required',
-            'phd_name'   => 'nullable|string|max:255',
-            'attributes' => 'required|array',
-            'attributes.*' => 'required|array',
-            'attributes.*.name' => 'required|string|max:255'
+            'phd_name'   => 'nullable|string|max:255'
         ]);
 
         try {
@@ -34,25 +31,15 @@ class CreateResume extends Controller
                 'resume_id'  => Resume::generateResumeID(),
                 'name'       => $request->name,
                 'location'   => $request->location,
-                'highschool' => $request->highschool,
+                'highschool' => boolval($request->highschool),
                 'hs_name'    => $request->hs_name ?? null,
-                'undergrad'  => $request->undergrad,
+                'undergrad'  => boolval($request->undergrad),
                 'ug_name'    => $request->ug_name ?? null,
-                'graduate'   => $request->graduate,
+                'graduate'   => boolval($request->graduate),
                 'g_name'     => $request->g_name ?? null,
-                'phd'        => $request->phd,
+                'phd'        => boolval($request->phd),
                 'phd_name'   => $request->hs_name ?? null,
             ]);
-
-            foreach ($request->all()['attributes'] as $attribute) {
-                if (isset($attribute['name'])) {
-                    ResumeAttribute::create([
-                        'resume_id' => $resume->resume_id,
-                        'attribute_id' => ResumeAttribute::generateAttributeID(),
-                        'name'         => $attribute['name']
-                    ]);
-                }
-            }
 
             return redirect()->route('home')->with('success', 'Successfully submitted the resume.');
         } catch (\Exception $e) {

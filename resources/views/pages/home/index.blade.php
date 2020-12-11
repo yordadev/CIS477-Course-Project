@@ -8,6 +8,7 @@
             @include('pages.partials.success')
         </div>
     </div>
+
     @switch(Auth::user()->permission->accountType())
         @case("candidate")
 
@@ -80,6 +81,49 @@
 
         @break;
         @case("hiring manager")
+        @include('pages.home.hiring_manager.jumbotron')
+        <div class="row">
+            <div class="col-12">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Manage Job Listings
+                    </div>
+                    <div class="card-body">
+                        <table class="table text-center">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Job #</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Created</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               
+                                <tr>
+                                    <th scope="row">-</th>
+                                    <td>--</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Job Intake Center
+                    </div>
+                    <div class="card-body">
+                        @include('pages.home.hiring_manager.create_job')
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
         @case("staff")

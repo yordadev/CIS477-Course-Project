@@ -5,10 +5,12 @@ use App\Http\Controllers\Pages\AuthController;
 use App\Http\Controllers\Pages\HomeController;
 use App\Http\Controllers\Pages\LandingController;
 use App\Http\Controllers\Functionality\AuthManager;
+use App\Http\Controllers\Functionality\RemoveResume;
 use App\Http\Controllers\Functionality\CreateResume;
-use App\Http\Controllers\Functionality\UpdateAttribute;
 use App\Http\Controllers\Functionality\UpdateResume;
-
+use App\Http\Controllers\Functionality\CreateAttribute;
+use App\Http\Controllers\Functionality\UpdateAttribute;
+use App\Http\Controllers\Functionality\RemoveAttribute;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,7 +36,23 @@ Route::middleware('auth')->group(function () {
     Route::get('/home', [HomeController::class, 'render'])->name('home');
     Route::get('/logout', [AuthManager::class, 'processLogout'])->name('logout');
 
-    Route::post('/candidate/resume', [CreateResume::class, 'process'])->name('post.candidate.resume');
-    Route::post('/candidate/resume/update', [UpdateResume::class, 'process'])->name('post.candidate.resume.update');
-    Route::post('/candidate/resume/attribute/update', [UpdateAttribute::class, 'process'])->name('post.candidate.resume.attribute.update');
+
+    Route::prefix('candidate')->group(function () {
+        Route::post('resume', [CreateResume::class, 'process'])->name('post.candidate.resume');
+
+        Route::prefix('resume')->group(function () {
+            Route::post('update', [UpdateResume::class, 'process'])->name('post.candidate.resume.update');
+            Route::post('remove', [RemoveResume::class, 'process'])->name('post.candidate.resume.remove');
+
+            Route::prefix('attribute')->group(function () {
+                Route::post('create', [CreateAttribute::class, 'process'])->name('post.candidate.resume.attribute.create');
+                Route::post('update', [UpdateAttribute::class, 'process'])->name('post.candidate.resume.attribute.update');
+                Route::post('remove', [RemoveAttribute::class, 'process'])->name('post.candidate.resume.attribute.remove');
+            });
+        });
+    });
+
+    Route::prefix('hiring')->group(function () {
+        Route::post('job', [CreateJob::class, 'process'])->name('post.hiring.job');
+    });
 });
