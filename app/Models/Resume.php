@@ -55,4 +55,9 @@ class Resume extends Model
     {
         return $this->hasMany(ResumeAttribute::class, 'resume_id', 'resume_id');
     }
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 }

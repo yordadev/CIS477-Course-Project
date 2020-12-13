@@ -54,8 +54,10 @@ Route::middleware('auth')->group(function () {
         });
     });
 
-    Route::prefix('hiring/job')->group(function () {
-        Route::post('create', [CreateJob::class, 'process'])->name('post.hiring.create.job');
-        Route::post('close', [CloseJob::class, 'process'])->name('post.hiring.close.job');
+    Route::prefix('hiring')->group(function () {
+        Route::prefix('job')->group(function () {
+            Route::post('create', [CreateJob::class, 'process'])->name('post.hiring.create.job');
+            Route::post('close', [CloseJob::class, 'process'])->name('post.hiring.close.job');
+        });
     });
 });

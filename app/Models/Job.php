@@ -13,6 +13,7 @@ class Job extends Model
         'job_id',
         'title',
         'location',
+        'minimum_education',
         'description'
     ];
 
@@ -20,6 +21,7 @@ class Job extends Model
         'posted_by' => 'integer',
         'job_id' => 'string',
         'title'  => 'string',
+        'minimum_education' => 'string',
         'location' => 'string',
     ];
 

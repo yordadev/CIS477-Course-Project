@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class ResumeAttribute extends Model
 {
-    use HasFactory;
-
     protected $cast = [
         'resume_id'    => 'string',
         'attribute_id' => 'string',

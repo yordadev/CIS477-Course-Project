@@ -89,25 +89,7 @@
                         Manage Job Listings
                     </div>
                     <div class="card-body">
-                        <table class="table text-center">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Job #</th>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">Created</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                               
-                                <tr>
-                                    <th scope="row">-</th>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        @include('pages.home.hiring_manager.job_listings')
                     </div>
                 </div>
             </div>

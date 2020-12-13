@@ -18,6 +18,7 @@ class CreateJobsTable extends Migration
             $table->integer('posted_by');
             $table->string('job_id');
             $table->string('title');
+            $table->string('minimum_education');
             $table->string('location');
             $table->longText('description');
             $table->timestamps();

@@ -21,10 +21,11 @@ class HiringManagerJobTest extends TestCase
         $user = User::where('email', 'hiringmanager@user.com')->first();
 
         $response = $this->actingAs($user, 'web')->post(
-            '/hiring/job',
+            '/hiring/job/create',
             [
                 'title'  => 'Software Engineer',
                 'location' => 'Remote, United States',
+                'minimum_education' => 'ug',
                 'description' => 'This is a job description.',
                 'attributes'   => [
                     'php', 'mysql', 'python'
@@ -48,6 +49,7 @@ class HiringManagerJobTest extends TestCase
             [
                 'title'  => 'Software Engineer',
                 'location' => 'Remote, United States',
+                'minimum_education' => 'ug',
                 'description' => 'This is a job description.',
                 'attribute'   => [
                     'php', 'mysql', 'python'
@@ -60,6 +62,7 @@ class HiringManagerJobTest extends TestCase
             [
                 'title'  => 'Software Engineer',
                 'location' => 'Remote, United States',
+                'minimum_education' => 'ug',
                 'description' => 'This is a job description.',
                 'attribute'   => [
                     'php', 'mysql', 'python'

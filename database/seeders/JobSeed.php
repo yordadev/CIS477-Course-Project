@@ -23,26 +23,35 @@ class JobSeed extends Seeder
             'posted_by' => $user->id,
             'job_id' => $job_id,
             'title' => 'Software Engineer',
+            'minimum_education' => 'ug',
             'location' => 'remote, united states',
-            'description' => 'this is a description for this job.'
+            'description' => 'this is a description for this job.',
+            'created_at'  => \Carbon\Carbon::now(),
+            'updated_at'  => \Carbon\Carbon::now()
         ]);
 
         DB::table('job_attributes')->insert([
             'job_id' => $job_id,
             'attribute_id' => uniqid() . 'seed',
-            'name' => 'php'
+            'name' => 'php',
+            'created_at'  => \Carbon\Carbon::now(),
+            'updated_at'  => \Carbon\Carbon::now()
         ]);
 
         DB::table('job_attributes')->insert([
             'job_id' => $job_id,
             'attribute_id' => uniqid() . 'seed',
-            'name' => 'mysql'
+            'name' => 'mysql',
+            'created_at'  => \Carbon\Carbon::now(),
+            'updated_at'  => \Carbon\Carbon::now()
         ]);
 
         DB::table('job_attributes')->insert([
             'job_id' => $job_id,
             'attribute_id' => uniqid() . 'seed',
-            'name' => 'python'
+            'name' => 'python',
+            'created_at'  => \Carbon\Carbon::now(),
+            'updated_at'  => \Carbon\Carbon::now()
         ]);
     }
 }

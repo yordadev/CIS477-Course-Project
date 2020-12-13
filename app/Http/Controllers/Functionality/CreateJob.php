@@ -13,11 +13,12 @@ class CreateJob extends Controller
     public function process(Request $request)
     {
         $request->validate([
-            'title'       => 'required|string|max:255',
-            'location'    => 'required|string|max:255',
-            'description' => 'required|string|max:420',
-            'attributes'   => 'required|array',
-            'attributes.*' => 'required|string|max:255'
+            'title'             => 'required|string|max:255',
+            'location'          => 'required|string|max:255',
+            'description'       => 'required|string|max:420',
+            'minimum_education' => 'required|string|max:255',
+            'attributes'        => 'required|array',
+            'attributes.*'      => 'nullable|string|max:255'
         ]);
 
         if (Job::where([
@@ -36,6 +37,7 @@ class CreateJob extends Controller
                 'job_id' => $job_id,
                 'title'  => strtolower($request->title),
                 'location' => strtolower($request->location),
+                'minimum_education' => strtolower($request->minimum_education),
                 'description' => $request->description
             ]);
 
