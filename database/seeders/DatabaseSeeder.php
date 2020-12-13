@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Database\Seeders\JobSeed;
 use Database\Seeders\DemoUser;
 use Illuminate\Database\Seeder;
 use Database\Seeders\PermissionGenerator;
@@ -18,7 +19,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             PermissionGenerator::class,
             DemoUser::class,
-            CandidateResume::class
+            CandidateResume::class,
+            JobSeed::class
         ]);
     }
 }

@@ -5,7 +5,6 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use App\Models\User;
 use Database\Seeders\DemoUser;
-use Database\Seeders\CandidateResume;
 use Database\Seeders\PermissionGenerator;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -45,7 +44,7 @@ class HiringManagerJobTest extends TestCase
         $user = User::where('email', 'hiringmanager@user.com')->first();
 
         $this->actingAs($user, 'web')->post(
-            '/hiring/job',
+            '/hiring/job/create',
             [
                 'title'  => 'Software Engineer',
                 'location' => 'Remote, United States',
@@ -57,7 +56,7 @@ class HiringManagerJobTest extends TestCase
         );
 
         $response = $this->actingAs($user, 'web')->post(
-            '/hiring/job',
+            '/hiring/job/create',
             [
                 'title'  => 'Software Engineer',
                 'location' => 'Remote, United States',

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Pages\AuthController;
 use App\Http\Controllers\Pages\HomeController;
 use App\Http\Controllers\Functionality\CreateJob;
+use App\Http\Controllers\Functionality\CloseJob;
 use App\Http\Controllers\Pages\LandingController;
 use App\Http\Controllers\Functionality\AuthManager;
 use App\Http\Controllers\Functionality\RemoveResume;
@@ -53,7 +54,8 @@ Route::middleware('auth')->group(function () {
         });
     });
 
-    Route::prefix('hiring')->group(function () {
-        Route::post('job', [CreateJob::class, 'process'])->name('post.hiring.job');
+    Route::prefix('hiring/job')->group(function () {
+        Route::post('create', [CreateJob::class, 'process'])->name('post.hiring.create.job');
+        Route::post('close', [CloseJob::class, 'process'])->name('post.hiring.close.job');
     });
 });
