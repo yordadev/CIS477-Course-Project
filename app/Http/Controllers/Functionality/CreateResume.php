@@ -26,7 +26,7 @@ class CreateResume extends Controller
         ]);
 
         try {
-            $resume = Resume::create([
+            Resume::create([
                 'user_id'    => Auth::user()->id,
                 'resume_id'  => Resume::generateResumeID(),
                 'name'       => $request->name,

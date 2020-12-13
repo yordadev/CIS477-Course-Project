@@ -26,10 +26,10 @@ class CreateAttribute extends Controller
             ResumeAttribute::create([
                 'resume_id' => Auth::user()->resume->resume_id,
                 'attribute_id' => ResumeAttribute::generateAttributeID(),
-                'name'         => $request->attribute
+                'name'         => strtolower($request->attribute)
             ]);
             return redirect()->route('home')->with('success', 'Attribute successfully created.');
-        } catch (\Exception $e){
+        } catch (\Exception $e) {
             return redirect()->route('home')->withErrors($e->getMessage());
         }
     }

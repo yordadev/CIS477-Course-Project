@@ -21,7 +21,6 @@ class Job extends Model
         'job_id' => 'string',
         'title'  => 'string',
         'location' => 'string',
-        'description' => 'longtext'
     ];
 
     public static function generateJobID()

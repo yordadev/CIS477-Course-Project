@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Pages\AuthController;
 use App\Http\Controllers\Pages\HomeController;
+use App\Http\Controllers\Functionality\CreateJob;
 use App\Http\Controllers\Pages\LandingController;
 use App\Http\Controllers\Functionality\AuthManager;
 use App\Http\Controllers\Functionality\RemoveResume;
