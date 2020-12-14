@@ -27,7 +27,7 @@ class HiringManagerJobTest extends TestCase
                 'location' => 'Remote, United States',
                 'minimum_education' => 'ug',
                 'description' => 'This is a job description.',
-                'attributes'   => [
+                'attribute'   => [
                     'php', 'mysql', 'python'
                 ]
             ]

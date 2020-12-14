@@ -36,15 +36,15 @@
 
         <div class="form-group col-lg-4">
             <label for="name">Desired Attribute</label>
-            <input type="text" class="form-control" name="attributes[]" placeholder="Unique skill">
+            <input type="text" class="form-control" name="attribute[]" placeholder="Unique skill">
         </div>
         <div class="form-group col-lg-4">
             <label for="location">Desired Attribute</label>
-            <input type="text" class="form-control" name="attributes[]" placeholder="Unique skill">
+            <input type="text" class="form-control" name="attribute[]" placeholder="Unique skill">
         </div>
         <div class="form-group col-lg-4">
             <label for="location">Desired Attribute</label>
-            <input type="text" class="form-control" name="attributes[]" placeholder="Unique skill">
+            <input type="text" class="form-control" name="attribute[]" placeholder="Unique skill">
         </div>
 
     </div>
@@ -53,15 +53,15 @@
 
         <div class="form-group col-lg-4">
             <label for="name">Desired Attribute</label>
-            <input type="text" class="form-control" name="attributes[]" placeholder="Unique skill">
+            <input type="text" class="form-control" name="attribute[]" placeholder="Unique skill">
         </div>
         <div class="form-group col-lg-4">
             <label for="location">Desired Attribute</label>
-            <input type="text" class="form-control" name="attributes[]" placeholder="Unique skill">
+            <input type="text" class="form-control" name="attribute[]" placeholder="Unique skill">
         </div>
         <div class="form-group col-lg-4">
             <label for="location">Desired Attribute</label>
-            <input type="text" class="form-control" name="attributes[]" placeholder="Unique skill">
+            <input type="text" class="form-control" name="attribute[]" placeholder="Unique skill">
         </div>
 
     </div>

@@ -17,8 +17,8 @@ class CreateJob extends Controller
             'location'          => 'required|string|max:255',
             'description'       => 'required|string|max:420',
             'minimum_education' => 'required|string|max:255',
-            'attributes'        => 'required|array',
-            'attributes.*'      => 'nullable|string|max:255'
+            'attribute'        => 'required|array',
+            'attribute.*'      => 'nullable|string|max:255'
         ]);
 
         if (Job::where([
@@ -41,12 +41,14 @@ class CreateJob extends Controller
                 'description' => $request->description
             ]);
 
-            foreach ($request->attributes as $attribute) {
-                JobAttribute::create([
-                    'job_id' => $job_id,
-                    'attribute_id' => JobAttribute::generateAttributeID(),
-                    'name' => strtolower($attribute)
-                ]);
+            foreach ($request->attribute as $attribute) {
+                if (!is_null($attribute)) {
+                    JobAttribute::create([
+                        'job_id' => $job_id,
+                        'attribute_id' => JobAttribute::generateAttributeID(),
+                        'name' => strtolower($attribute)
+                    ]);
+                }
             }
 
             return redirect()->route('home')->with('success', 'Successfully created the job in the system.');
