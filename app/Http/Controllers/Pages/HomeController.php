@@ -57,9 +57,6 @@ class HomeController extends Controller
                 break;
         }
 
-        foreach ($data['jobs'] as $job) {
-            //dd($job['information']);
-        }
         return view('pages.home.index', [
             'data' => $data ?? []
         ]);
